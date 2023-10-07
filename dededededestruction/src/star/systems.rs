@@ -14,3 +14,4 @@ pub fn spawn_stars_over_time(
       score.value += 1;
   }
 }
+

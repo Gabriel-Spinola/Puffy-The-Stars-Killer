@@ -1,5 +1,4 @@
 use bevy::{prelude::{Query, Commands, AssetServer, With, Transform, Handle, Image, Vec2, Res, Vec3}, window::{Window, PrimaryWindow}, sprite::SpriteBundle, time::Time};
-use rand::random;
 
 use super::{components::CEnemy, NUMBER_OF_ENEMIES, ENEMY_SPEED, ENEMY_SPRITE_SIZE};
 
@@ -13,8 +12,8 @@ pub fn spawn_enemies(
     let preloaded_texture: Handle<Image> = asset_server.load("sprites/inimigi.png");
 
     for _ in 0..NUMBER_OF_ENEMIES {
-        let random_x = random::<f32>() * window.width();
-        let random_y = random::<f32>() * window.height();
+        let random_x = 20.0 * window.width();
+        let random_y = 20.0 * window.height();
 
         commands.spawn((
             SpriteBundle {
@@ -23,7 +22,7 @@ pub fn spawn_enemies(
                 ..Default::default() // Set all other field to default
             },
             CEnemy {
-                direction: Vec2::new(random::<f32>(), random::<f32>()).normalize(),
+                direction: Vec2::new(0.0, 10.0).normalize(),
             },
         ));
     }
